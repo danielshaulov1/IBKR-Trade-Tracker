@@ -2,16 +2,19 @@ import os, re, datetime, sys, time
 from google.oauth2.credentials import Credentials
 from google.auth.transport.requests import Request
 from googleapiclient.discovery import build
+from dotenv import load_dotenv
+load_dotenv()
 
 # === CONFIG ===
 SCOPES = [
     'https://www.googleapis.com/auth/gmail.readonly',
     'https://www.googleapis.com/auth/spreadsheets'
 ]
-LABEL_NAME  = ''  # Leave blank or 'ALL' to ignore label filtering
-SHEET_ID    = ''  # <-- Add your Google Sheets ID here
-SHEET_RANGE = 'Transactions!A2:A1000'
-DATE_QUERY  = 'after:2025/01/03'
+
+LABEL_NAME  = os.getenv("LABEL_NAME", "Interactive Brokers")
+SHEET_ID    = os.getenv("SHEET_ID")
+SHEET_RANGE = os.getenv("SHEET_RANGE", "Transactions!A2:A1000")
+DATE_QUERY  = os.getenv("DATE_QUERY", "after:2025/01/03")
 
 # === LOAD CREDS ===
 creds = None

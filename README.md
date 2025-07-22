@@ -12,19 +12,9 @@ Automatically fetch your **Interactive Brokers** trade confirmation emails from 
 Clone the repo and install dependencies:
 
 ```bash
-git clone https://github.com/yourusername/ibkr-trade-importer.git
-cd ibkr-trade-importer
+git clone https://github.com/danielshaulov1/IBKR-Trade-Tracker.git
+cd IBKR-Trade-Tracker
 pip install -r requirements.txt
-```
-
-### 📦 Required Python packages
-
-Put this in `requirements.txt`:
-
-```txt
-google-api-python-client
-google-auth
-google-auth-oauthlib
 ```
 
 ---
@@ -38,10 +28,15 @@ google-auth-oauthlib
      - Gmail API
      - Google Sheets API
 
-2. **Create OAuth credentials**
-   - Go to **APIs & Services → Credentials**.
-   - Click **Create Credentials → OAuth client ID → Desktop App**.
-   - Download `client_secret.json` into the project folder.
+2. **🔐 How to generate `client_secret.json`**
+   1. Go to the [Google Cloud Console](https://console.cloud.google.com/).
+   2. Create a new project or select an existing one.
+   3. Navigate to **APIs & Services > Credentials**.
+   4. Click **Create Credentials > OAuth Client ID**.
+   5. Choose **Desktop App** as the application type.
+   6. Download the JSON and rename it to `client_secret.json`.
+   7. Save this file in the same directory as your script.
+
 
 3. **Authorize token**
    ```bash
@@ -54,13 +49,12 @@ google-auth-oauthlib
 
 ## 📁 Google Sheets Structure
 
-Create a spreadsheet with a sheet called `Transactions`:
+Use the ready-to-use Google Sheets template to track your trades:
 
-| A (MessageID) | B (Date) | C (Type) | D (Stock) | E (Units) | F (Price) | G (Fees) |
-|---------------|----------|----------|-----------|-----------|-----------|----------|
-| `abc123...`   | 2025-07-18 | Buy     | TSLA      | 10        | 123.45    | 1.80     |
+🔗 [Click here to open the sheet template](https://docs.google.com/spreadsheets/d/1LXaW6vJzmrlqaLyOZGVJnye97EwmJ92IkVHccgb5MV8/edit?usp=sharing)
 
-Put the **Spreadsheet ID** into your script:
+- Make a copy: `File` → `Make a copy` to use it with your own account.
+- Update the `SHEET_ID` in your `.env` file accordingly.
 ```python
 SHEET_ID = 'your-spreadsheet-id-here'
 ```
@@ -82,7 +76,7 @@ It will:
 
 ## 📌 Optional: Use Gmail Label
 
-If you organize your emails using a Gmail label (like "Interactive Brokers"), set it in the script:
+If you organize your emails using a Gmail label (like `Interactive Brokers`), set it in your `.env` file :
 
 ```python
 LABEL_NAME = 'Interactive Brokers'
@@ -137,13 +131,3 @@ MIT
 ## 🤝 Contribute
 
 PRs welcome. Make sure to test with your own Gmail + IBKR setup.
-
-## 🔐 How to generate `client_secret.json`
-
-1. Go to the [Google Cloud Console](https://console.cloud.google.com/).
-2. Create a new project or select an existing one.
-3. Navigate to **APIs & Services > Credentials**.
-4. Click **Create Credentials > OAuth Client ID**.
-5. Choose **Desktop App** as the application type.
-6. Download the JSON and rename it to `client_secret.json`.
-7. Save this file in the same directory as your script.
