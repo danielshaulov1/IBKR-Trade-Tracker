@@ -8,13 +8,35 @@ Automatically fetch your **Interactive Brokers** trade confirmation emails from 
 ---
 
 ## 🔧 Installation
+📦 Install Python & pip (if missing)
+Make sure Python 3 and pip are installed:
+macOS (using Homebrew):
+```bash
+brew install python
+```
+
+Ubuntu / Debian:
+```bash
+sudo apt update
+sudo apt install python3 python3-pip
+```
+Windows:
+```bash
+Download Python installer
+During install, check “Add Python to PATH”
+```
+
+Confirm pip is available:
+```bash
+pip --version
+```
 
 Clone the repo and install dependencies:
 
 ```bash
 git clone https://github.com/danielshaulov1/IBKR-Trade-Tracker.git
 cd IBKR-Trade-Tracker
-pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 ```
 
 ---
