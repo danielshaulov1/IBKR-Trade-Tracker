@@ -1,6 +1,6 @@
 # 📊 IBKR Gmail Trade Importer
 
-Automatically fetch your **Interactive Brokers** trade confirmation emails from Gmail and append them to a **Google Sheets spreadsheet** for tracking and analysis.
+Automatically fetch your Interactive Brokers trade confirmation emails from Gmail and append them to a Google Sheets spreadsheet for tracking and analysis.
 
 > 💡 Works without labels, but optionally supports Gmail label filtering.
 > 🎯 Compatible with `BOUGHT` / `SOLD` email formats from Interactive Brokers.
